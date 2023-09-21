@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home page
+{% endblock %}
+{% block homeactive %}active text-primary{% endblock homeactive %}
+
+<!-- {% block css%}
+.bd{
+  background-color:aqua;
+}
+{% endblock %} -->
+
+{% block body %}
+  <div class="container border bd bg-primary-subtle mt-5">
+    <div class="row py-lg-5 my-4">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light text-center">Vlogs_with_jamal</h1>
+        <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <div class="container text-center">
+          <a href="/blog" class="btn btn-primary my-2">Go to Blog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-center my-2">Popular Blogs</h3>
+  {% for view in viewss%}
+  <div class="container center  d-flex justify-content-center align-items-center">
+    
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary-emphasis">{{view.author}}</strong>
+          <h3 class="mb-0">{{view.title}}</h3>
+          <div class="mb-1 text-body-secondary">{{view.time_stamp}}</div>
+          <p class="card-text mb-auto">{{view.content|safe|truncatechars:150}}</p>
+          <a href="/blog/{{view.slug}}" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading<svg class="bi">
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+{% endblock %}
